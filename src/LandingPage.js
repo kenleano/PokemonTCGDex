@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import LandingBackground from "./LandingBackground";
 
 const LandingPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,10 +16,11 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center flex-col h-screen">
+    <div className="flex justify-center items-center flex-col h-screen relative">
       {/* Search Bar */}
+    
+      <div className="z-10">
       <img src="./assets/pokemontcglogo.png" className="w-[300px] flex my-5 " />
-      <div>
         <input
           className="border-2 border-gray-300 bg-white h-10 px-2 w-96 rounded-lg text-sm focus:outline-none"
           type="search"
@@ -29,7 +31,9 @@ const LandingPage = () => {
           onKeyPress={handleSearch} // Listen for "Enter" key press
         />
       </div>
-    
+      <div className="absolute inset-0 z-0">
+        <LandingBackground />
+      </div>
     </div>
   );
 };
