@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
+import SearchCardsCss from "./SearchCards.css";
 
 const SearchCards = () => {
   const { searchQuery: initialSearchQuery } = useParams();
@@ -71,44 +72,32 @@ const SearchCards = () => {
   };
 
   return (
-    
-    <div>
+    <div className="container">
       <NavBar />
       <div className="flex justify-center my-10">
         <input
-          className="border-2 border-gray-300 bg-white h-10 px-2 w-96 rounded-lg text-sm focus:outline-none"
+          className="search-input"
           type="search"
           placeholder="Search a card"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          style={{
-            color: "black",
-            backgroundColor: "white",
-            borderColor: "gray",
-          }}
         />
       </div>
-
-      <div className="flex flex-row flex-wrap justify-center gap-10 my-10">
+  
+      <div className="card-container">
         {cards.map((card) => (
-          <div key={card.id}>
-            <div>
-              <p>{card.id}</p>
-              <p>{card.name}</p>
-              <Link to={`/pokemon-card-detail/${card.id}`}>
-                <img
-                  className="h-[400px]"
-                  src={card.images.small}
-                  alt={card.name}
-                />
-              </Link>
-            </div>
+          <div className="card" key={card.id}>
+            <p>{card.id}</p>
+            <p>{card.name}</p>
+            <Link to={`/pokemon-card-detail/${card.id}`}>
+              <img src={card.images.small} alt={card.name} />
+            </Link>
           </div>
         ))}
       </div>
-
+  
       {totalPages > 1 && (
-        <div className="flex justify-center gap-10 my-10">
+        <div className="pagination">
           <button onClick={handlePreviousPage} disabled={page === 1}>
             Previous
           </button>
@@ -120,6 +109,7 @@ const SearchCards = () => {
       )}
     </div>
   );
+  
 };
 
 export default SearchCards;

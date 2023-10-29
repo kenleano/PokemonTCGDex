@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import PokemonCardDetailCss from "./PokemonCardDetails.css";
 
 const PokemonCardDetail = () => {
   const { cardId } = useParams();
@@ -32,17 +33,16 @@ const PokemonCardDetail = () => {
   }
 
   return (
-    <div >
-      <p className="text-center justify-center my-10">{card.name}</p>
-
+    <div className="container">
+      <p className="card-name">{card.name}</p>
+  
       <div className="flex flex-row flex-wrap justify-center gap-10">
         <div>
-          <img src={card.images.large} alt={card.name} className="w-[400px]" />
+          <img src={card.images.large} alt={card.name} className="card-image" />
         </div>
-        <div>
+        <div className="card-details">
           <h2>Card Details</h2>
           <p>ID: {card.id}</p>
-
           <p>Rules: {card.rules}</p>
           <p>Subtypes:</p>
           {card.subtypes?.map((subtype, index) => (
@@ -50,20 +50,18 @@ const PokemonCardDetail = () => {
               <p>{subtype}</p>
             </div>
           ))}
-          {card.attacks?.map((attack) => (
-            <div>
-              <div>
-                <br />
-                <p>{attack.name}</p>
-                <p>{attack.damage}</p>
-                <p>{attack.text}</p>
-              </div>
+          {card.attacks?.map((attack, index) => (
+            <div className="card-attack" key={index}>
+              <h3>{attack.name}</h3>
+              <p>{attack.damage}</p>
+              <p>{attack.text}</p>
             </div>
           ))}
         </div>
       </div>
     </div>
   );
+  
 };
 
 export default PokemonCardDetail;
