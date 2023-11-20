@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/PokemonTCGDex/static/css/main.e20bb376.css",
+    "main.js": "/PokemonTCGDex/static/js/main.e49c199d.js",
+    "index.html": "/PokemonTCGDex/index.html",
+    "main.e20bb376.css.map": "/PokemonTCGDex/static/css/main.e20bb376.css.map",
+    "main.e49c199d.js.map": "/PokemonTCGDex/static/js/main.e49c199d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e20bb376.css",
+    "static/js/main.e49c199d.js"
+  ]
+}
